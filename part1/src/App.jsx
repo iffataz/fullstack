@@ -1,64 +1,28 @@
-const App = () => {
-  const course = {
-    name: 'Half Stack application development',
-    parts: [
-      {
-        name: 'Fundamentals of React',
-        exercises: 10
-      },
-      {
-        name: 'Using props to pass data',
-        exercises: 7
-      },
-      {
-        name: 'State of a component',
-        exercises: 14
-      }
-    ]
-  }
-  return (
-    <div>
-      <Header course={course} />
-      <Content course={course}/>
-      <Total course={course}/>
-    </div>
-  );
-};
+const Hello = ({ name, age }) => {
+  // const {name, age} = props;
+  // const name = props.name;
+  // const age = props.age;
+  const bornYear = () => new Date().getFullYear() - age;
 
-const Header = (props) => {
-  console.log(props);
-  return (
-    <div>
-      <h1>{props.course.name}</h1>
-    </div>
-  );
-};
-
-const Content = (props) => {
-
-  return (
-    <div>
-      <Part partName={props.course.parts[0].name} numExs={props.course.parts[0].exercises} />
-      <Part partName={props.course.parts[1].name} numExs={props.course.parts[1].exercises} />
-      <Part partName={props.course.parts[2].name} numExs={props.course.parts[2].exercises} />
-    </div>
-  );
-};
-
-const Total = (props) => {
   return (
     <div>
       <p>
-        Number of exercises is <strong>{props.course.parts[0].exercises + props.course.parts[1].exercises + props.course.parts[2].exercises}</strong>
+        Hello {name}, you are {age} years old
       </p>
+      <p>So you were probably born in {bornYear()}</p>
     </div>
   );
 };
 
-const Part = (props) => {
+const App = () => {
+  const name = "Peter";
+  const age = 10;
+
   return (
     <div>
-      {props.partName}: {props.numExs}
+      <h1>Greetings</h1>
+      <Hello name="Maya" age={26 + 10} />
+      <Hello name={name} age={age} />
     </div>
   );
 };
